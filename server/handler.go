@@ -22,7 +22,7 @@ func RedirectHandler(w http.ResponseWriter, r *http.Request, conf *Config, reque
 	defer r.Body.Close()
 
 	// Sign the request
-	req, err := sign(bodyBytes, conf)
+	req, err := createSignedRequest(bodyBytes, conf)
 	if err != nil {
 		fmt.Errorf("error signing request: %w", err)
 		http.Error(w, "Failed to sign request", http.StatusInternalServerError)

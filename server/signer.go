@@ -12,7 +12,7 @@ import (
 )
 
 // Sign creates and signs an HTTP request to AWS Bedrock
-func sign(payloadBytes []byte, config *Config) (*http.Request, error) {
+func createSignedRequest(payloadBytes []byte, config *Config) (*http.Request, error) {
 	// Setting the endpoint and path
 	endpoint := fmt.Sprintf("https://bedrock-runtime.%s.amazonaws.com", config.Region)
 	path := fmt.Sprintf("/model/%s/invoke", config.ModelID)
